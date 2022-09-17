@@ -11,6 +11,7 @@ import (
 func Run() {
 	http.HandleFunc("/", routes.GetRoot)
 	http.HandleFunc("/hello", routes.GetHello)
+	http.HandleFunc("/health", routes.Check)
 
 	err := http.ListenAndServe(":8080", nil)
 	if errors.Is(err, http.ErrServerClosed) {
