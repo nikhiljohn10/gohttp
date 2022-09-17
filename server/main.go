@@ -1,16 +1,16 @@
-package main
+package server
 
 import (
 	"errors"
-	"example/routes"
 	"fmt"
+	"gohttp/lib/routes"
 	"net/http"
 	"os"
 )
 
-func main() {
-	http.HandleFunc("/", routes.getRoot)
-	http.HandleFunc("/hello", routes.getHello)
+func Run() {
+	http.HandleFunc("/", routes.GetRoot)
+	http.HandleFunc("/hello", routes.GetHello)
 
 	err := http.ListenAndServe(":8080", nil)
 	if errors.Is(err, http.ErrServerClosed) {
